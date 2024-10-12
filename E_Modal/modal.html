@@ -1,119 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="tailstyle.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Employee Information</title>
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
+<body class="bg-gray-100 p-6">
 
-    <!-- Button to open the modal -->
-    <button id="openModalBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Show Employee Info</button>
-  
-    <!-- Modal -->
-    <div id="employeeModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div class="bg-white w-3/4 max-w-4xl rounded-lg shadow-lg p-6">
-        <div class="flex justify-between items-center border-b pb-4">
-          <h2 class="text-xl font-semibold">Employee Information</h2>
-          <button id="closeModalBtn" class="text-red-500 font-bold">&times;</button>
-        </div>
-        
-        <!-- Table for Employee Info -->
-        <div class="overflow-x-auto mt-4">
-          <table class="min-w-full bg-white border border-gray-300">
-            <thead>
-              <tr class="bg-gray-100">
-                <th class="py-2 px-4 border">Name</th>
-                <th class="py-2 px-4 border">Job Title</th>
-                <th class="py-2 px-4 border">Department</th>
-                <th class="py-2 px-4 border">Email</th>
-                <th class="py-2 px-4 border">Contact No.</th>
-                <th class="py-2 px-4 border">Address</th>
-                <th class="py-2 px-4 border">Sex</th>
-                <th class="py-2 px-4 border">Marital Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Employee Row 1 -->
-              <tr>
-                <td class="py-2 px-4 border">Ivan Petrov</td>
-                <td class="py-2 px-4 border">Software Engineer</td>
-                <td class="py-2 px-4 border">IT</td>
-                <td class="py-2 px-4 border">ivan.petrov@sinksrus.com</td>
-                <td class="py-2 px-4 border">555-6789</td>
-                <td class="py-2 px-4 border">12 Red Square, Moscow</td>
-                <td class="py-2 px-4 border">Male</td>
-                <td class="py-2 px-4 border">Single</td>
-              </tr>
-              <!-- Employee Row 2 -->
-              <tr>
-                <td class="py-2 px-4 border">Pedro Los Baños</td>
-                <td class="py-2 px-4 border">Marketing Manager</td>
-                <td class="py-2 px-4 border">Marketing</td>
-                <td class="py-2 px-4 border">pedro_los_banos@sinksrus.com</td>
-                <td class="py-2 px-4 border"></td>
-                <td class="py-2 px-4 border">123 Mabini St</td>
-                <td class="py-2 px-4 border">Male</td>
-                <td class="py-2 px-4 border">Married</td>
-              </tr>
-              <!-- Employee Row 3 -->
-              <tr>
-                <td class="py-2 px-4 border">Ana Gómez</td>
-                <td class="py-2 px-4 border">HR Specialist</td>
-                <td class="py-2 px-4 border">HR</td>
-                <td class="py-2 px-4 border">ana.gomez@sinksrus.com</td>
-                <td class="py-2 px-4 border">555-1526</td>
-                <td class="py-2 px-4 border"></td>
-                <td class="py-2 px-4 border">Female</td>
-                <td class="py-2 px-4 border">Divorced</td>
-              </tr>
-              <!-- Employee Row 4 -->
-              <tr>
-                <td class="py-2 px-4 border">John Wu</td>
-                <td class="py-2 px-4 border">Sales Associate</td>
-                <td class="py-2 px-4 border">Sales</td>
-                <td class="py-2 px-4 border">john.wu@sinksrus.com</td>
-                <td class="py-2 px-4 border">555-6925</td>
-                <td class="py-2 px-4 border">456 Rizal St</td>
-                <td class="py-2 px-4 border">Male</td>
-                <td class="py-2 px-4 border">Single</td>
-              </tr>
-              <!-- Employee Row 5 -->
-              <tr>
-                <td class="py-2 px-4 border">Emma Wilson</td>
-                <td class="py-2 px-4 border">CEO</td>
-                <td class="py-2 px-4 border">Admin</td>
-                <td class="py-2 px-4 border">emma@sinksrus.com</td>
-                <td class="py-2 px-4 border">555-1111</td>
-                <td class="py-2 px-4 border"></td>
-                <td class="py-2 px-4 border">Female</td>
-                <td class="py-2 px-4 border">Married</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  <!-- Table displaying employee data -->
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white border border-gray-300">
+      <thead class="bg-blue-500 text-white">
+        <tr>
+          <th class="py-2 px-4 border-b">Name</th>
+          <th class="py-2 px-4 border-b">Job Title</th>
+          <th class="py-2 px-4 border-b">Department</th>
+          <th class="py-2 px-4 border-b">Email</th>
+          <th class="py-2 px-4 border-b">Contact No.</th>
+          <th class="py-2 px-4 border-b">Address</th>
+          <th class="py-2 px-4 border-b">Sex</th>
+          <th class="py-2 px-4 border-b">Marital Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="cursor-pointer hover:bg-blue-100" onclick="openModal('Ivan')">
+          <td class="py-2 px-4 border-b">Ivan Petrov</td>
+          <td class="py-2 px-4 border-b">Software Engineer</td>
+          <td class="py-2 px-4 border-b">IT</td>
+          <td class="py-2 px-4 border-b">ivan.petrov@sinksrus.com</td>
+          <td class="py-2 px-4 border-b">555-6789</td>
+          <td class="py-2 px-4 border-b">12 Red Square, Moscow</td>
+          <td class="py-2 px-4 border-b">Male</td>
+          <td class="py-2 px-4 border-b">Single</td>
+        </tr>
+        <tr class="cursor-pointer hover:bg-blue-100" onclick="openModal('Pedro')">
+          <td class="py-2 px-4 border-b">Pedro Los Baños</td>
+          <td class="py-2 px-4 border-b">Marketing Manager</td>
+          <td class="py-2 px-4 border-b">Marketing</td>
+          <td class="py-2 px-4 border-b">pedro_los_banos@sinksrus.com</td>
+          <td class="py-2 px-4 border-b">N/A</td>
+          <td class="py-2 px-4 border-b">123 Mabini St</td>
+          <td class="py-2 px-4 border-b">Male</td>
+          <td class="py-2 px-4 border-b">Married</td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center">
+    <div class="bg-white w-96 p-6 rounded-lg shadow-lg">
+      <div class="text-right">
+        <button onclick="closeModal()" class="text-gray-600 hover:text-gray-900">&times;</button>
       </div>
+      <h2 id="employeeName" class="text-xl font-bold mb-4 text-blue-600"></h2>
+      <p><strong>Job Title:</strong> <span id="employeeJob"></span></p>
+      <p><strong>Department:</strong> <span id="employeeDepartment"></span></p>
+      <p><strong>Email:</strong> <span id="employeeEmail"></span></p>
+      <p><strong>Contact No.:</strong> <span id="employeeContact"></span></p>
+      <p><strong>Address:</strong> <span id="employeeAddress"></span></p>
+      <p><strong>Sex:</strong> <span id="employeeSex"></span></p>
+      <p><strong>Marital Status:</strong> <span id="employeeMaritalStatus"></span></p>
     </div>
-  
-    <script>
-      const openModalBtn = document.getElementById('openModalBtn');
-      const employeeModal = document.getElementById('employeeModal');
-      const closeModalBtn = document.getElementById('closeModalBtn');
-  
-      openModalBtn.addEventListener('click', () => {
-        employeeModal.classList.remove('hidden');
-      });
-  
-      closeModalBtn.addEventListener('click', () => {
-        employeeModal.classList.add('hidden');
-      });
-  
-      window.addEventListener('click', (e) => {
-        if (e.target === employeeModal) {
-          employeeModal.classList.add('hidden');
-        }
-      });
-    </script>
-  </body>
-  </html>
+  </div>
+
+  <script>
+    const employeeData = {
+      Ivan: {
+        name: "Ivan Petrov",
+        job: "Software Engineer",
+        department: "IT",
+        email: "ivan.petrov@sinksrus.com",
+        contact: "555-6789",
+        address: "12 Red Square, Moscow",
+        sex: "Male",
+        maritalStatus: "Single"
+      },
+      Pedro: {
+        name: "Pedro Los Baños",
+        job: "Marketing Manager",
+        department: "Marketing",
+        email: "pedro_los_banos@sinksrus.com",
+        contact: "N/A",
+        address: "123 Mabini St",
+        sex: "Male",
+        maritalStatus: "Married"
+      }
+      // Add more employee data as needed
+    };
+
+    function openModal(employeeId) {
+      const employee = employeeData[employeeId];
+      document.getElementById('employeeName').textContent = employee.name;
+      document.getElementById('employeeJob').textContent = employee.job;
+      document.getElementById('employeeDepartment').textContent = employee.department;
+      document.getElementById('employeeEmail').textContent = employee.email;
+      document.getElementById('employeeContact').textContent = employee.contact;
+      document.getElementById('employeeAddress').textContent = employee.address;
+      document.getElementById('employeeSex').textContent = employee.sex;
+      document.getElementById('employeeMaritalStatus').textContent = employee.maritalStatus;
+      document.getElementById('modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
