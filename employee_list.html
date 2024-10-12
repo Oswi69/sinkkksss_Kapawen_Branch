@@ -7,40 +7,143 @@
     <title>Employee List</title>
 </head>
 <body class="bg-gray-100 p-6">
-    <table class="min-w-full bg-white">
-        <thead>
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-300">
+          <thead class="bg-blue-500 text-white">
             <tr>
-                <th class="py-2">Name</th>
-                <th class="py-2">Job Title</th>
-                <th class="py-2">Department</th>
-                <th class="py-2">Email</th>
-                <th class="py-2">Action</th>
+              <th class="py-2 px-4 border-b">Name</th>
+              <th class="py-2 px-4 border-b">Job Title</th>
+              <th class="py-2 px-4 border-b">Department</th>
+              <th class="py-2 px-4 border-b">Email</th>
+              <th class="py-2 px-4 border-b">Action</th>
             </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>John Doe</td>
-                <td>Software Engineer</td>
-                <td>IT</td>
-                <td>john.doe@example.com</td>
-                <td><button class="bg-blue-500 text-white p-1 rounded" onclick="openModal()">Info</button></td>
+          </thead>
+          <tbody>
+            <tr class="cursor-pointer hover:bg-blue-100" onclick="openModal('Ivan')">
+              <td class="py-2 px-4 border-b">Ivan Petrov</td>
+              <td class="py-2 px-4 border-b">Software Engineer</td>
+              <td class="py-2 px-4 border-b">IT</td>
+              <td class="py-2 px-4 border-b">ivan.petrov@sinksrus.com</td>
+              <td class="py-2 px-4 border-b">INFO</td>
             </tr>
-        </tbody>
-    </table>
-    <div id="modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
-        <div class="bg-white p-4 rounded">
-            <h2 class="text-lg font-bold">Employee Info</h2>
-            <p>Details about the employee will go here.</p>
-            <button onclick="closeModal()" class="bg-red-500 text-white p-1 rounded">Close</button>
+            <tr class="cursor-pointer hover:bg-blue-100" onclick="openModal('Pedro')">
+              <td class="py-2 px-4 border-b">Pedro Los Baños</td>
+              <td class="py-2 px-4 border-b">Marketing Manager</td>
+              <td class="py-2 px-4 border-b">Marketing</td>
+              <td class="py-2 px-4 border-b">pedro_los_banos@sinksrus.com</td>
+              <td class="py-2 px-4 border-b">INFO</td>
+            </tr>
+            <tr class="cursor-pointer hover:bg-blue-100" onclick="openModal('Ana')">
+                <td class="py-2 px-4 border-b">Ana Gómez</td>
+                <td class="py-2 px-4 border-b">HR Specialist</td>
+                <td class="py-2 px-4 border-b">HR</td>
+                <td class="py-2 px-4 border-b">	ana.gomez@sinksrus.com</td>
+                <td class="py-2 px-4 border-b">INFO</td>
+            </tr>
+              <tr class="cursor-pointer hover:bg-blue-100" onclick="openModal('John')">
+                <td class="py-2 px-4 border-b">John Wu</td>
+                <td class="py-2 px-4 border-b">Sales Associate</td>
+                <td class="py-2 px-4 border-b">Sales</td>
+                <td class="py-2 px-4 border-b">john.wu@sinksrus.com</td>
+                <td class="py-2 px-4 border-b">INFO</td>
+              </tr>
+              <tr class="cursor-pointer hover:bg-blue-100" onclick="openModal('Emma')">
+                <td class="py-2 px-4 border-b">Emma Wilson</td>
+                <td class="py-2 px-4 border-b">CEO</td>
+                <td class="py-2 px-4 border-b">Admin</td>
+                <td class="py-2 px-4 border-b">emma@sinksrus.com</td>
+                <td class="py-2 px-4 border-b">INFO</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    
+      <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center">
+        <div class="bg-white w-96 p-6 rounded-lg shadow-lg">
+          <div class="text-right">
+            <button onclick="closeModal()" class="text-gray-600 hover:text-gray-900">&times;</button>
+          </div>
+          <h2 id="employeeName" class="text-xl font-bold mb-4 text-blue-600"></h2>
+          <p><strong>Job Title:</strong> <span id="employeeJob"></span></p>
+          <p><strong>Department:</strong> <span id="employeeDepartment"></span></p>
+          <p><strong>Email:</strong> <span id="employeeEmail"></span></p>
+          <p><strong>Contact No.:</strong> <span id="employeeContact"></span></p>
+          <p><strong>Address:</strong> <span id="employeeAddress"></span></p>
+          <p><strong>Sex:</strong> <span id="employeeSex"></span></p>
+          <p><strong>Marital Status:</strong> <span id="employeeMaritalStatus"></span></p>
         </div>
-    </div>
+      </div>
+    </table>
     <script>
-        function openModal() {
-            document.getElementById('modal').classList.remove('hidden');
-        }
-        function closeModal() {
-            document.getElementById('modal').classList.add('hidden');
-        }
+    const employeeData = {
+      Ivan: {
+        name: "Ivan Petrov",
+        job: "Software Engineer",
+        department: "IT",
+        email: "ivan.petrov@sinksrus.com",
+        contact: "555-6789",
+        address: "12 Red Square, Moscow",
+        sex: "male",
+        maritalStatus: "Single"
+      },
+      Pedro: {
+        name: "Pedro Los Baños",
+        job: "Marketing Manager",
+        department: "Marketing",
+        email: "pedro_los_banos@sinksrus.com",
+        contact: "N/A",
+        address: "123 Mabini St",
+        sex: "Male",
+        maritalStatus: "Married"
+      },
+      Ana: {
+        name: "Ana Gómez",
+        job: "HR Specialist",
+        department: "HR",
+        email: "ana.gomez@sinksrus.com",
+        contact: "555-1526",
+        address: "N/A",
+        sex: "F",
+        maritalStatus: "Divorced"
+      },
+      John: {
+        name: "John Wu",
+        job: "Sales Associate",
+        department: "Sales",
+        email: "john.wu@sinksrus.com",
+        contact: "555-6925",
+        address: "456 Rizal St",
+        sex: "male",
+        maritalStatus: "Single"
+      },
+      Emma: {
+        name: "Emma Wilson",
+        job: "CEO",
+        department: "Admin",
+        email: "emma@sinksrus.com",
+        contact: "555-1111",
+        address: "N/A",
+        sex: "female",
+        maritalStatus: "Married"
+      }
+    };
+
+    function openModal(employeeId) {
+      const employee = employeeData[employeeId];
+      document.getElementById('employeeName').textContent = employee.name;
+      document.getElementById('employeeJob').textContent = employee.job;
+      document.getElementById('employeeDepartment').textContent = employee.department;
+      document.getElementById('employeeEmail').textContent = employee.email;
+      document.getElementById('employeeContact').textContent = employee.contact;
+      document.getElementById('employeeAddress').textContent = employee.address;
+      document.getElementById('employeeSex').textContent = employee.sex;
+      document.getElementById('employeeMaritalStatus').textContent = employee.maritalStatus;
+      document.getElementById('modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+    }
     </script>
 </body>
 </html>
